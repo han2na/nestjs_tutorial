@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UsersService } from '../../../users/services/users/users.service';
 import { comparePasswords } from '../../../utils/bcrypt';
-import { ConsoleLog } from '../../utils/ConsoleLog';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +9,7 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, password: string) {
-    ConsoleLog('validateUser');
+    console.log('validateUser', __filename);
     const userDb = await this.userService.getuserByUsername(username);
     if (!userDb) {
       return null;

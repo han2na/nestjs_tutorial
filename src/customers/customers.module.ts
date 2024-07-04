@@ -9,7 +9,6 @@ import { CustomersService } from './services/customers/customers.service';
 import { ValidateCustomerMiddleware } from './middlewares/validate-customer.middleware';
 import { CustomerAccountMiddleware } from './middlewares/validate-customer-account.middleware';
 import { NextFunction, Request, Response } from 'express';
-import { ConsoleLog } from '../auth/utils/ConsoleLog';
 
 @Module({
   controllers: [CustomersController],
@@ -22,7 +21,7 @@ export class CustomersModule implements NestModule {
         ValidateCustomerMiddleware,
         CustomerAccountMiddleware,
         (req: Request, res: Response, next: NextFunction) => {
-          ConsoleLog('Last Middleware');
+          console.log('Last Middleware', __filename);
           next();
         },
       )

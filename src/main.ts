@@ -13,15 +13,16 @@ async function bootstrap() {
       name: 'SESSION_NAME_ID',
       secret: 'AHDHCNBSDHCNMWISOJDCNFH',
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       cookie: {
         maxAge: 60000,
       },
     }),
   );
+
   app.use(passport.initialize());
   app.use(passport.session());
-  
+
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
