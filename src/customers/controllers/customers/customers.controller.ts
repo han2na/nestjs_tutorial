@@ -1,15 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Param,
-  ParseIntPipe,
-  Post,
-  Req,
-  Res,
-} from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Req, Res } from '@nestjs/common';
 import { CustomersService } from '../../services/customers/customers.service';
 import { Request, Response } from 'express';
 import { CreateCustomerDto } from '../../dtos/CreateCustomer.dto';

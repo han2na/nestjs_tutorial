@@ -1,10 +1,4 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsNotEmptyObject,
-  IsNumberString,
-  ValidateNested,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, IsNotEmptyObject, IsNumberString, ValidateNested } from 'class-validator';
 import { CreateAddressDto } from './CreateAddress.dto';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
