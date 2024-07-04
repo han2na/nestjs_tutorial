@@ -1,5 +1,7 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { UsersService } from '../../../users/services/users/users.service';
+import { comparePasswords } from '../../../utils/bcrypt';
+import { ConsoleLog } from '../../utils/ConsoleLog';
 
 @Injectable()
 export class AuthService {
@@ -8,10 +10,17 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, password: string) {
-    console.log('Inside', __filename.split('dist')[1]);
+    ConsoleLog('validateUser');
     const userDb = await this.userService.getuserByUsername(username);
+    if (!userDb) {
+      return null;
+    }
 
-    if (userDb && userDb.password === password) return userDb;
-    throw new UnauthorizedException();
+    const matched = comparePasswords(password, userDb.password);
+    if (!matched) {
+      return null;
+    }
+
+    return userDb;
   }
 }
